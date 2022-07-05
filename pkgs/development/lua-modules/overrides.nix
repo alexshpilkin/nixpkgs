@@ -175,6 +175,13 @@ with prev;
       '';
     });
 
+  lmpfr = prev.lib.overrideLuarocks prev.lmpfr (drv: {
+    externalDeps = [
+      { name = "GMP"; dep = pkgs.gmp; }
+      { name = "MPFR"; dep = pkgs.mpfr; }
+    ];
+  });
+
   lmpfrlib = prev.lib.overrideLuarocks prev.lmpfrlib (drv: {
     externalDeps = [
       { name = "GMP"; dep = pkgs.gmp; }

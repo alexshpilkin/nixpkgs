@@ -26,6 +26,7 @@ lgmp,,,,,,alexshpilkin
 linenoise,https://github.com/hoelzro/lua-linenoise.git,,,,,
 ljsyscall,,,,,lua5_1,lblasc
 lmathx,,,,,lua5_3,alexshpilkin
+lmpfr,,,,,,alexshpilkin
 lmpfrlib,,,,,lua5_3,alexshpilkin
 loadkit,,,,,,alerque
 lpeg,,,,,,vyp

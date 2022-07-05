@@ -786,6 +786,40 @@ buildLuarocksPackage {
   };
 }) {};
 
+lmpfr = callPackage({ buildLuarocksPackage, luaOlder, luaAtLeast
+, fetchgit, lua
+}:
+buildLuarocksPackage {
+  pname = "lmpfr";
+  version = "0.1.0-1";
+  knownRockspec = (fetchurl {
+    url    = "https://luafr.org/luarocks/lmpfr-0.1.0-1.rockspec";
+    sha256 = "1vf0nna03mg7zarwgj0akl8k7sq7lyv0wsl19aanas67i0s9bgy7";
+  }).outPath;
+  src = fetchgit ( removeAttrs (builtins.fromJSON ''{
+  "url": "https://github.com/alexshpilkin/lmpfr",
+  "rev": "9bcadb5d6b878d9f9dc76a6d7b18f3f4b2dad9f7",
+  "date": "2022-07-03T00:07:50+03:00",
+  "path": "/nix/store/9wphi9dzy7xnka6kplgr5yddmisw6b21-lmpfr",
+  "sha256": "1wmms2kfh2lq9k0kmcxsppxcxf09p9wabpqvjrmjcs987zi60r7c",
+  "fetchLFS": false,
+  "fetchSubmodules": true,
+  "deepClone": false,
+  "leaveDotGit": false
+}
+ '') ["date" "path"]) ;
+
+  disabled = with lua; (luaOlder "5.1") || (luaAtLeast "5.5");
+  propagatedBuildInputs = [ lua ];
+
+  meta = {
+    homepage = "https://github.com/alexshpilkin/lmpfr";
+    description = "LGMP-compatible Lua C API bindings for GNU MPFR";
+    maintainers = with lib.maintainers; [ alexshpilkin ];
+    license.fullName = "CC0";
+  };
+}) {};
+
 lmpfrlib = callPackage({ buildLuarocksPackage, luaOlder, luaAtLeast
 , fetchurl, lua
 }:
