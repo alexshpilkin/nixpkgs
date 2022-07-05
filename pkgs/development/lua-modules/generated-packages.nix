@@ -679,6 +679,40 @@ buildLuarocksPackage {
   };
 }) {};
 
+lgmp = callPackage({ buildLuarocksPackage, luaOlder, luaAtLeast
+, fetchgit, lua
+}:
+buildLuarocksPackage {
+  pname = "lgmp";
+  version = "1.0-1";
+  knownRockspec = (fetchurl {
+    url    = "https://raw.githubusercontent.com/rocks-moonscript-org/moonrocks-mirror/master/lgmp-1.0-1.rockspec";
+    sha256 = "0sg3gs6h2mvmhh552fzgw79sxf3jhl66s18db3ivm9azail8v0w8";
+  }).outPath;
+  src = fetchgit ( removeAttrs (builtins.fromJSON ''{
+  "url": "https://github.com/ImagicTheCat/lgmp",
+  "rev": "3810acd1e4d39b1c15bac2b16c8e2e7afbb94ffc",
+  "date": "2019-10-21T14:39:14+02:00",
+  "path": "/nix/store/d8dy1rivrii09im3bwf9p44n90vkijp7-lgmp",
+  "sha256": "0r1k8ckg7js9fx7hny7b9qany0w00g0rbzdbln0rd4bfcwn0v2yc",
+  "fetchLFS": false,
+  "fetchSubmodules": true,
+  "deepClone": false,
+  "leaveDotGit": false
+}
+ '') ["date" "path"]) ;
+
+  disabled = with lua; (luaOlder "5.1") || (luaAtLeast "5.4");
+  propagatedBuildInputs = [ lua ];
+
+  meta = {
+    homepage = "https://github.com/ImagicTheCat/lgmp";
+    description = "GMP Lua C API bindings";
+    maintainers = with lib.maintainers; [ alexshpilkin ];
+    license.fullName = "MIT";
+  };
+}) {};
+
 linenoise = callPackage({ buildLuarocksPackage, luaOlder, luaAtLeast
 , fetchurl, lua
 }:

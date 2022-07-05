@@ -135,6 +135,14 @@ with prev;
     '';
   });
 
+  lgmp = prev.lib.overrideLuarocks prev.lgmp (drv: {
+    # https://github.com/ImagicTheCat/lgmp/pull/2
+    disabled = luaOlder "5.2" || luaAtLeast "5.5";
+    externalDeps = [
+      { name = "GMP"; dep = pkgs.gmp; }
+    ];
+  });
+
   lmathx = prev.lib.overrideLuarocks prev.lmathx (drv:
     if luaAtLeast "5.1" && luaOlder "5.2" then {
       version = "20120430.51-1";
