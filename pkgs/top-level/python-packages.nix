@@ -10708,6 +10708,8 @@ self: super: with self; {
 
   sqlite-fts4 = callPackage ../development/python-modules/sqlite-fts4 { };
 
+  sqliteschema = callPackage ../development/python-modules/sqliteschema { };
+
   sqlite-utils = callPackage ../development/python-modules/sqlite-utils { };
 
   sqlmap = callPackage ../development/python-modules/sqlmap { };
