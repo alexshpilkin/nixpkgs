@@ -8747,6 +8747,8 @@ self: super: with self; {
 
   pytabix = callPackage ../development/python-modules/pytabix { };
 
+  pytablereader = callPackage ../development/python-modules/pytablereader { };
+
   pytado = callPackage ../development/python-modules/pytado { };
 
   pytaglib = callPackage ../development/python-modules/pytaglib { };
