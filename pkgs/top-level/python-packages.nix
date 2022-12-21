@@ -8751,6 +8751,8 @@ self: super: with self; {
 
   pytablewriter = callPackage ../development/python-modules/pytablewriter { };
 
+  pytablewriter-altrow-theme = callPackage ../development/python-modules/pytablewriter-altrow-theme { };
+
   pytado = callPackage ../development/python-modules/pytado { };
 
   pytaglib = callPackage ../development/python-modules/pytaglib { };
