@@ -8749,6 +8749,8 @@ self: super: with self; {
 
   pytablereader = callPackage ../development/python-modules/pytablereader { };
 
+  pytablewriter = callPackage ../development/python-modules/pytablewriter { };
+
   pytado = callPackage ../development/python-modules/pytado { };
 
   pytaglib = callPackage ../development/python-modules/pytaglib { };
