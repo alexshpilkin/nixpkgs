@@ -8874,6 +8874,8 @@ self: super: with self; {
 
   pytest-logdog = callPackage ../development/python-modules/pytest-logdog{ };
 
+  pytest-md-report = callPackage ../development/python-modules/pytest-md-report { };
+
   pytest-metadata = callPackage ../development/python-modules/pytest-metadata { };
 
   pytest-mock = callPackage ../development/python-modules/pytest-mock { };
