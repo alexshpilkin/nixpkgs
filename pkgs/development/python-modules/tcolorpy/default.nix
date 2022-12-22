@@ -2,6 +2,7 @@
 , buildPythonPackage
 , fetchPypi
 , pythonOlder
+, pytest
 }:
 
 let
@@ -17,7 +18,12 @@ buildPythonPackage {
   };
 
   disabled = pythonOlder "3.6";
-  doCheck = false;
+  checkInputs = [ pytest ];
+
+  postPatch = ''
+    sed -i '/^md_report/d' pyproject.toml
+  '';
+  checkPhase = "pytest";
 
   meta = with lib; {
     homepage = "https://github.com/thombashi/tcolorpy";
