@@ -3,6 +3,8 @@
 , fetchPypi
 , pythonOlder
 , chardet
+, faker
+, pytest
 }:
 
 let
@@ -19,7 +21,12 @@ buildPythonPackage {
 
   disabled = pythonOlder "3.6";
   propagatedBuildInputs = [ chardet ];
-  doCheck = false;
+  checkInputs = [ faker pytest ];
+
+  postPatch = ''
+    sed -i '/^md_report/d' pyproject.toml
+  '';
+  checkPhase = "pytest";
 
   meta = with lib; {
     homepage = "https://github.com/thombashi/mbstrdecoder";
