@@ -3,6 +3,8 @@
 , fetchPypi
 , pythonOlder
 , mbstrdecoder
+, pytest
+, termcolor
 , typepy
 }:
 
@@ -20,7 +22,12 @@ buildPythonPackage {
 
   disabled = pythonOlder "3.6";
   propagatedBuildInputs = [ mbstrdecoder typepy ];
-  doCheck = false;
+  checkInputs = [ pytest termcolor ];
+
+  postPatch = ''
+    sed -i '/^md_report/d' pyproject.toml
+  '';
+  checkPhase = "pytest";
 
   meta = with lib; {
     homepage = "https://github.com/thombashi/DataProperty";
