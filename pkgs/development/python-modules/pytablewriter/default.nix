@@ -2,22 +2,31 @@
 , buildPythonPackage
 , fetchPypi
 , pythonOlder
+, beautifulsoup4
 , dataproperty
 , dominate
 , elasticsearch
+, idna
 , loguru
 , mbstrdecoder
+, pandas
 , pathvalidate
 , pytablereader
+, pytablewriter-altrow-theme
+, pytest
+, pytest-md-report
 , pyyaml
 , simplejson
 , simplesqlite
+, sqliteschema
 , tabledata
+, tablib
 , tcolorpy
 , toml
 , typepy
 , XlsxWriter
 , xlwt
+, doCheck ? true
 , withExcel ? true
 , withES7 ? true
 , withFrom ? true
@@ -57,7 +66,19 @@ buildPythonPackage {
     ++ lib.optional withSQLite simplesqlite
     ++ lib.optional withTOML toml
     ++ lib.optional withYAML pyyaml;
-  doCheck = false;
+  checkInputs = [
+    beautifulsoup4
+    idna
+    pandas
+    pytablereader
+    (pytablewriter-altrow-theme.override { doCheck = false; })
+    pytest
+    sqliteschema
+    tablib
+  ];
+
+  inherit doCheck;
+  checkPhase = "pytest";
 
   meta = with lib; {
     homepage = "https://github.com/thombashi/pytablewriter";
