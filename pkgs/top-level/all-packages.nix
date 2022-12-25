@@ -17902,6 +17902,8 @@ with pkgs;
 
   revive = callPackage ../development/tools/revive { };
 
+  riscv-config = with python3Packages; toPythonApplication riscv-config;
+
   rman = callPackage ../development/tools/misc/rman { };
 
   rnix-lsp = callPackage ../development/tools/rnix-lsp { nix = nixVersions.nix_2_9; };

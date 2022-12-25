@@ -9835,6 +9835,8 @@ self: super: with self; {
 
   ripser = callPackage ../development/python-modules/ripser { };
 
+  riscv-config = callPackage ../development/python-modules/riscv-config { };
+
   rising = callPackage ../development/python-modules/rising { };
 
   ritassist = callPackage ../development/python-modules/ritassist { };
