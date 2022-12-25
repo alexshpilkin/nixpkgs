@@ -17902,6 +17902,8 @@ with pkgs;
 
   revive = callPackage ../development/tools/revive { };
 
+  riscof = with python3Packages; toPythonApplication riscof;
+
   riscv-config = with python3Packages; toPythonApplication riscv-config;
 
   riscv-isac = with python3Packages; toPythonApplication riscv-isac;
