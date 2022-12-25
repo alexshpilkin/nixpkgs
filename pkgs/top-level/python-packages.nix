@@ -9837,6 +9837,8 @@ self: super: with self; {
 
   riscv-config = callPackage ../development/python-modules/riscv-config { };
 
+  riscv-isac = callPackage ../development/python-modules/riscv-isac { };
+
   rising = callPackage ../development/python-modules/rising { };
 
   ritassist = callPackage ../development/python-modules/ritassist { };

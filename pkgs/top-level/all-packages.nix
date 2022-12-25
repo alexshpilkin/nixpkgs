@@ -17904,6 +17904,8 @@ with pkgs;
 
   riscv-config = with python3Packages; toPythonApplication riscv-config;
 
+  riscv-isac = with python3Packages; toPythonApplication riscv-isac;
+
   rman = callPackage ../development/tools/misc/rman { };
 
   rnix-lsp = callPackage ../development/tools/rnix-lsp { nix = nixVersions.nix_2_9; };
